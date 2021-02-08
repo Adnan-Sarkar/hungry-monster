@@ -1,10 +1,17 @@
-
-
 const searchBtn = document.getElementById("search-btn");
 searchBtn.addEventListener("click", function () {
     const searchMeal = document.getElementById("search-meal");
     const searchMealInput = searchMeal.value;
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchMealInput}`)
+    if (searchMealInput == '' || searchMealInput == null) {
+        const displayErrTypeSomething = document.getElementById("display-err-type-something");
+        const mealItemContent = 
+                `
+                <h1>Please Type Something 😌</h1>
+                `
+                displayErrTypeSomething.innerHTML = mealItemContent;
+    }
+    else {
+        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchMealInput}`)
     .then(res => res.json())
     .then(data => {
         displayMealItem(data.meals);
@@ -22,7 +29,9 @@ searchBtn.addEventListener("click", function () {
     mealItemsSection.innerHTML = '';
     const displayErr = document.getElementById("display-err")
     displayErr.innerHTML = "";
-
+    const displayErrTypeSomething = document.getElementById("display-err-type-something");
+    displayErrTypeSomething.innerHTML = '';
+    }
 })
 
 
@@ -72,8 +81,11 @@ const displayMealDetails = mealDetails => {
             `
 
             const mealDetailsSection = document.getElementById("meal-details");
+            mealDetailsSection.innerHTML = "";
             const mealDetailsDiv = document.createElement("div");
             mealDetailsDiv.innerHTML = ingredients;
             mealDetailsSection.appendChild(mealDetailsDiv);
+
+            
         })
 }

@@ -166,7 +166,6 @@ nav .menu ul li a:hover{
     list-style-type: none;
     margin-top: 20px;
     font-size: 18px;
-   
 }
 .meal-details-wrapper li i{
     font-size: 12px;
@@ -178,9 +177,18 @@ nav .menu ul li a:hover{
     line-height: 15px;
     margin-right: 20px;
 }
+
+/* ========== Display Meal Items Css End ========== */
+
+/* ========== Display Search Error Css Start ========== */
+
 #display-err{
     margin-top: 30px;
     text-align: center;
 }
+#display-err-type-something{
+    margin-top: 30px;
+    text-align: center;
+}
 
-/* ========== Display Meal Items Css End ========== */
+/* ========== Display Search Error Css End ========== */
