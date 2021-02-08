@@ -1,5 +1,15 @@
 const searchBtn = document.getElementById("search-btn");
 searchBtn.addEventListener("click", function () {
+
+    // Old Content Remove After Search Something
+    const mealItemsSection = document.getElementById("meal-items-section");
+    const displayErrTypeSomething = document.getElementById("display-err-type-something");
+    const displayErr = document.getElementById("display-err")
+    mealItemsSection.innerHTML = '';
+    displayErr.innerHTML = "";
+    displayErrTypeSomething.innerHTML = '';
+
+    // Check Input Field is it Empty or not
     const searchMeal = document.getElementById("search-meal");
     const searchMealInput = searchMeal.value;
     if (searchMealInput == '' || searchMealInput == null) {
@@ -24,13 +34,8 @@ searchBtn.addEventListener("click", function () {
                 `
         displayErr.innerHTML = mealItemContent;
     })
+    
     searchMeal.value = '';
-    const mealItemsSection = document.getElementById("meal-items-section");
-    mealItemsSection.innerHTML = '';
-    const displayErr = document.getElementById("display-err")
-    displayErr.innerHTML = "";
-    const displayErrTypeSomething = document.getElementById("display-err-type-something");
-    displayErrTypeSomething.innerHTML = '';
     }
 })
 
@@ -57,7 +62,6 @@ const displayMealItem = meal => {
 
 // For Display Details Function
 const displayMealDetails = mealDetails => {
-   
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealDetails}`;
     fetch(url)
         .then(res => res.json())
